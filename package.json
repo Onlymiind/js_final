@@ -1,0 +1,41 @@
+{
+  "name": "rpg-game",
+  "version": "1.0.0",
+  "description": "rpg game project",
+  "keywords": [
+    "rpg",
+    "game",
+    "js"
+  ],
+  "homepage": "https://github.com/Onlymiind/js_final#readme",
+  "bugs": {
+    "url": "https://github.com/Onlymiind/js_final/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Onlymiind/js_final.git"
+  },
+  "license": "ISC",
+  "author": "Onlymiind",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d dist",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.28.3",
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "@eslint/js": "^9.39.1",
+    "eslint": "^9.39.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "from": "^0.1.7",
+    "import": "^0.0.6",
+    "js": "^0.1.0"
+  },
+  "dependencies": {
+    "core-js": "^3.47.0"
+  }
+}
