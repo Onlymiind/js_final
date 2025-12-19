@@ -1,3 +1,5 @@
+import { assertType } from './Util';
+
 export class Weapon {
   name;
   attack;
@@ -6,16 +8,16 @@ export class Weapon {
   range;
 
   takeDamage(damage) {
-    if (typeof (damage) != 'number')
-      throw new Error('invalid damage value: ' + damage);
+    assertType(damage, 'damage', 'number');
     this.durability = Math.min(Math.max(this.durability - damage, 0), this.initDurability);
   }
 
   getDamage() {
-    if (this.durability >= 0.3 * this.initDurability)
+    if (this.durability >= 0.3 * this.initDurability) {
       return this.attack;
-    else if (this.durability > 0)
+    } else if (this.durability > 0) {
       return this.attack / 2;
+    }
     return 0;
   }
 
@@ -24,17 +26,18 @@ export class Weapon {
   }
 
   constructor(name, attack, durability, range) {
-    if (typeof (name) != 'string')
-      throw new Error('name must be a string, got: ' + name);
-    if (typeof (attack) != 'number' || attack <= 0)
-      throw new Error('invalid attack value: ' + attack);
-    if (typeof (range) != 'number' || range <= 0)
-      throw new Error('invalid range: ' + range); this.name = name;
-    if (typeof (durability) != 'number' || durability <= 0)
+    assertType(name, 'name', 'string');
+    assertType(attack, 'attack', 'number');
+    assertType(range, 'range', 'number');
+    assertType(durability, 'durability', 'number');
+    if (durability <= 0) {
       throw new Error('invalid durability: ' + durability);
+    }
+
     this.attack = attack;
     this.durability = durability;
     this.initDurability = durability;
     this.range = range;
+    this.name = name;
   }
 }

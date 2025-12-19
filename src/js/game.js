@@ -1,16 +1,29 @@
-import { Archer } from "Archer";
-import { Warrior } from "Warrior";
-import { Mage } from "Mage";
-import { Dwart } from "Dwart";
-import { Crossbowman } from "Crossbowman";
-import { Demourge } from "Demourge";
 
-let _ = new Archer(1, '');
-_ = new Warrior(1, '');
-_ = new Mage(1, '');
-_ = new Dwart(1, '');
-_ = new Crossbowman(1, '');
-_ = new Demourge(1, '');
-_;
+export function play(players) {
+  if (!Array.isArray(players)) {
+    throw new Error('players is not an array');
+  }
 
-export function play() { }
+  while (players.length > 1) {
+    for (const player of players) {
+      player.turn(players);
+    }
+
+    players = players.filter((player) => {
+      const isAlive = !player.isDead();
+      if (!isAlive) {
+        console.log(player.name + ' is dead!');
+      }
+      return isAlive;
+    });
+  }
+
+  if (players.length === 0) {
+    return null;
+  }
+
+  const winner = players[0];
+  console.log(winner.name + ' wins!');
+  return winner;
+
+}

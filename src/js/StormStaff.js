@@ -1,4 +1,4 @@
-import * as staff from 'Staff';
+import * as staff from './Staff';
 
 export class StormStaff extends staff.Staff {
   constructor() {

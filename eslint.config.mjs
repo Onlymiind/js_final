@@ -7,6 +7,11 @@ export default [
     plugins: {
       extends: ["airbnb-base/legacy"]
     },
+    languageOptions: {
+      globals: {
+        console: 'readonly',
+      }
+    }
   },
   globalIgnores(['dist/'])
 ];

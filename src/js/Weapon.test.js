@@ -1,4 +1,13 @@
+import { Arm } from './Arm';
+import { Axe } from './Axe';
+import { Bow } from './Bow';
+import { Knife } from './Knife';
+import { LongBow } from './LongBow';
+import { Staff } from './Staff';
+import { StormStaff } from './StormStaff';
+import { Sword } from './Sword';
 import { Weapon } from './Weapon';
+import { expect, test } from '@jest/globals';
 
 test('constructor', () => {
   expect(() => new Weapon).toThrow(Error);
@@ -47,3 +56,23 @@ test('isBroken', () => {
   weapon.takeDamage(90);
   expect(weapon.isBroken()).toEqual(true);
 });
+
+test.each(
+  [
+    ['Arm', 'Рука', 1, Infinity, 1, new Arm()],
+    ['Knife', 'Нож', 5, 300, 1, new Knife()],
+    ['Sword', 'Меч', 25, 500, 1, new Sword()],
+    ['Bow', 'Лук', 10, 200, 3, new Bow()],
+    ['Staff', 'Посох', 8, 300, 2, new Staff()],
+    ['StormStaff', 'Посох Бури', 10, 300, 3, new StormStaff()],
+    ['LongBow', 'Длинный лук', 15, 200, 4, new LongBow()],
+    ['Axe', 'Секира', 27, 800, 1, new Axe()],
+  ]
+)('Init values (%s)',
+  (caseName, name, attack, durability, range, weapon) => {
+    expect(weapon.name).toEqual(name);
+    expect(weapon.attack).toEqual(attack);
+    expect(weapon.durability).toEqual(durability);
+    expect(weapon.initDurability).toEqual(durability);
+    expect(weapon.range).toEqual(range);
+  });

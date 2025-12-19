@@ -9,10 +9,6 @@ export default {
   target: 'web',
   devtool: 'inline-source-map',
   entry: path.resolve(dirname, 'src/index.js'),
-  resolve: {
-    extensions: ['.js'],
-    modules: [path.resolve(dirname, 'src/js'), path.resolve(dirname, 'node_modules')]
-  },
   output: {
     path: path.resolve(dirname, 'dist'),
   },
