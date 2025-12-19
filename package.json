@@ -21,7 +21,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "lint": "eslint .",
-    "test": "jest --coverage --roots ./src/js"
+    "test": "jest --coverage"
   },
   "devDependencies": {
     "@babel/cli": "^7.28.3",
